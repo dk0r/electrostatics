@@ -20,6 +20,12 @@ public class ParticleManager : MonoBehaviour {
     }
 
     public IEnumerator Cycle(MovingChargedParticle mcp) {
+
+        //At runtime, Unity may call ParticleManager's Start() before MovingChargedParticle's Start(). In this case, the references
+        //to MovingChargedParticle, that ParticleManager depends on, will not be available. To alleviate this issue, 'yield return null' 
+        //will ensure 1-frame is elappsed so that all of the script's Start() functions have been executed b ythe 2nd frame.. 
+        yield return null;
+
         while (true) {
             ApplyMagneticForce(mcp);
             yield return new WaitForSeconds(cycleInterval);

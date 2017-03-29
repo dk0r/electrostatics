@@ -6,7 +6,7 @@ public class MovingChargedParticle : ChargedParticle {
 
     public float mass = 1;
     public Rigidbody rb;
-
+    asdasdasd
     private void Start() {
         UpdateColor();
 
